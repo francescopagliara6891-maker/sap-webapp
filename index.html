@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAP Knowledge Base</title> 
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            /* Sfondo Grigio Tecnico (Stile SAP Fiori) */
+            background-color: #eff4f9; 
+            color: #333;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 450px;
+            text-align: center;
+            background: #ffffff;
+            padding: 40px 30px;
+            border-radius: 12px; 
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            /* Linea Blu SAP in alto per tocco professionale */
+            border-top: 6px solid #005483; 
+        }
+
+        /* Icona Database/Server */
+        .icon-main {
+            font-size: 54px;
+            margin-bottom: 15px;
+            color: #005483; /* Blu SAP */
+            text-shadow: 0 4px 10px rgba(0, 84, 131, 0.2);
+        }
+
+        h2 {
+            margin: 0 0 8px 0;
+            font-weight: 700;
+            font-size: 24px;
+            color: #2c3e50;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .subtitle {
+            font-size: 13px;
+            color: #7f8c8d;
+            margin-bottom: 35px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        /* Barra di Ricerca Stile Business */
+        input[type="text"] {
+            width: 100%;
+            padding: 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            background-color: #fbfbfb;
+            color: #333;
+            font-size: 16px;
+            text-align: center;
+            box-sizing: border-box;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            border-color: #005483;
+            background-color: #fff;
+            box-shadow: 0 0 0 4px rgba(0, 84, 131, 0.1);
+        }
+
+        /* Footer con la tua Firma */
+        .footer-credits {
+            margin-top: 45px;
+            font-size: 11px;
+            color: #bdc3c7;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 20px;
+            line-height: 1.4;
+        }
+        
+        .footer-credits b {
+            color: #7f8c8d;
+            font-weight: 600;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="icon-main">🗄️</div> 
+        
+        <h2>SAP SYSTEM</h2>
+        <div class="subtitle">Knowledge & Issue Tracker</div>
+        
+        <input type="text" id="searchInput" placeholder="Cerca T-Code, Errori..." autocomplete="off">
+        
+        <div class="footer-credits">
+            Internal Tool Managed by<br>
+            <b>Francesco Pagliara</b>
+        </div>
+    </div>
+
+    <script>
+        let tg = window.Telegram.WebApp;
+        tg.expand(); 
+
+        tg.MainButton.text = "🔎 CERCA NEL DATABASE";
+        tg.MainButton.color = "#005483"; // Blu SAP
+        tg.MainButton.textColor = "#ffffff"; 
+        
+        let input = document.getElementById("searchInput");
+
+        input.addEventListener('input', function() {
+            if (input.value.trim().length > 0) {
+                tg.MainButton.show();
+            } else {
+                tg.MainButton.hide();
+            }
+        });
+
+        Telegram.WebApp.onEvent('mainButtonClicked', function(){
+            let data = { query: input.value.trim() };
+            tg.sendData(JSON.stringify(data)); 
+        });
+    </script>
+</body>
+</html>
