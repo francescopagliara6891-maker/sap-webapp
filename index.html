@@ -15,7 +15,6 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            /* Sfondo Grigio Tecnico (Stile SAP Fiori) */
             background-color: #eff4f9; 
             color: #333;
         }
@@ -26,18 +25,16 @@
             text-align: center;
             background: #ffffff;
             padding: 40px 30px;
-            border-radius: 12px; 
+            border-radius: 8px; 
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-            /* Linea Blu SAP in alto per tocco professionale */
-            border-top: 6px solid #005483; 
+            border-top: 6px solid #008FD3; /* SAP Blue Ufficiale */
         }
 
-        /* Icona Database/Server */
-        .icon-main {
-            font-size: 54px;
-            margin-bottom: 15px;
-            color: #005483; /* Blu SAP */
-            text-shadow: 0 4px 10px rgba(0, 84, 131, 0.2);
+        /* STILE PER IL LOGO REALE */
+        .logo-sap {
+            width: 100px; /* Larghezza ideale per logo SAP */
+            height: auto;
+            margin-bottom: 25px;
         }
 
         h2 {
@@ -46,7 +43,6 @@
             font-size: 24px;
             color: #2c3e50;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
         
         .subtitle {
@@ -58,12 +54,11 @@
             letter-spacing: 1.5px;
         }
 
-        /* Barra di Ricerca Stile Business */
         input[type="text"] {
             width: 100%;
             padding: 16px;
             border: 2px solid #e0e0e0;
-            border-radius: 8px;
+            border-radius: 6px;
             background-color: #fbfbfb;
             color: #333;
             font-size: 16px;
@@ -74,12 +69,11 @@
         }
 
         input[type="text"]:focus {
-            border-color: #005483;
+            border-color: #008FD3;
             background-color: #fff;
-            box-shadow: 0 0 0 4px rgba(0, 84, 131, 0.1);
+            box-shadow: 0 0 0 4px rgba(0, 143, 211, 0.1);
         }
 
-        /* Footer con la tua Firma */
         .footer-credits {
             margin-top: 45px;
             font-size: 11px;
@@ -99,7 +93,7 @@
 <body>
 
     <div class="container">
-        <div class="icon-main">🗄️</div> 
+        <img src="sap.png" alt="SAP Logo" class="logo-sap">
         
         <h2>SAP SYSTEM</h2>
         <div class="subtitle">Knowledge & Issue Tracker</div>
@@ -117,7 +111,7 @@
         tg.expand(); 
 
         tg.MainButton.text = "🔎 CERCA NEL DATABASE";
-        tg.MainButton.color = "#005483"; // Blu SAP
+        tg.MainButton.color = "#008FD3"; // Blu SAP
         tg.MainButton.textColor = "#ffffff"; 
         
         let input = document.getElementById("searchInput");
